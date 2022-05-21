@@ -2,7 +2,6 @@
 import { Router } from 'express';
 import HobbiesController from '../controllers/hobbies.controller';
 import { Routes } from '../interfaces/routes.interface';
-import validationMiddleware from '../middleware/validation.middleware';
 
 class HobbiesRoute implements Routes {
   public route = '/hobbies';

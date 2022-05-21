@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "test": "nodemon . --ext ts --exec \"mocha -r ts-node/register src/tests/*.test.ts\"",
-    "start": "node dist/index.js",
-    "build": "tsc -p ."
+    "start": "env-cmd -f prod.env node dist/server.js",
+    "build": "tsc -p .",
+    "lint": "eslint . --ext .ts"
   },
   "repository": {
     "type": "git",
@@ -48,6 +49,7 @@
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
+    "env-cmd": "^10.1.0",
     "express": "^4.17.1",
     "mongoose": "^6.3.4",
     "morgan": "^1.10.0",

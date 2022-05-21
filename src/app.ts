@@ -6,7 +6,7 @@ import swaggerUi from 'swagger-ui-express';
 import { NODE_ENV, PORT } from './config';
 import { dbConnection } from './config/mongodb';
 import { Routes } from './interfaces/routes.interface';
-import { logger, stream } from './utils/logger';
+import { logger } from './utils/logger';
 import errorMiddleware from './middleware/error.middleware';
 class App {
   public app: express.Application;

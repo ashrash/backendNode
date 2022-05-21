@@ -1,0 +1,33 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: Stop Exisiting Running Containers
+        run: docker stop backend-node 2> /dev/null || true
+        
+      - name: Delete Exisiting Running Containers
+        run: docker rm backend-node 2> /dev/null || true
+        
+      - name: Delete Existing Docker Images
+        run: docker rmi $(docker images | grep 'backend-node:latest') 2> /dev/null || true
+        
+      - uses: actions/checkout@v2
+      - name: Create Env File
+        run: |
+          cat << EOF > prod.env
+          MONGODB_CONNECTION_URL=${{secrets.MONGODB_CONNECTION_URL}}
+          EOF
+          
+      - name: Build Docker Image
+        run: docker build . --file Dockerfile --tag backend-node:latest
+          
+      - name: Deploy Container
+        run: docker run --rm -it --env-file prod.env --name=backend-node -p 3000:3000 -d backend-node:latest

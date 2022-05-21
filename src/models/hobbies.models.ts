@@ -1,4 +1,4 @@
-import { model, Schema, Document } from 'mongoose';
+import { model, Schema } from 'mongoose';
 import { Hobbies } from '../interfaces/hobbies.interface';
 
 const hobbiesSchema: Schema = new Schema({

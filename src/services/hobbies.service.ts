@@ -34,7 +34,7 @@ class HobbiesService {
 
     const createdHobbyData: Hobbies = await this.hobbies.create(hobbyData);
     resultUser.hobbies.push(createdHobbyData._id);
-    const updatedUserData: User | null = await this.users.findByIdAndUpdate(userId, new usersModel(resultUser));
+    await this.users.findByIdAndUpdate(userId, new usersModel(resultUser));
 
     return createdHobbyData;
   }
