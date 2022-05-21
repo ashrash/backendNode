@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 30
+    },
+    "auditLog": "/Users/aramamurth/code/backendNode/src/utils/error/.fe9af13e88efd607887b74a50feae42ed46432a0-audit.json",
+    "files": [
+        {
+            "date": 1653157128917,
+            "name": "/Users/aramamurth/code/backendNode/src/utils/error/2022-05-21.log",
+            "hash": "c00f1006b15936e17bb80f02cd3d9599"
+        }
+    ],
+    "hashType": "md5"
+}

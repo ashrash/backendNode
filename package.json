@@ -1,0 +1,58 @@
+{
+  "name": "nodebackend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "test": "nodemon . --ext ts --exec \"mocha -r ts-node/register src/tests/*.test.ts\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashrash/nodeBackend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ashrash/nodeBackend/issues"
+  },
+  "homepage": "https://github.com/ashrash/nodeBackend#readme",
+  "devDependencies": {
+    "@types/chai": "^4.3.1",
+    "@types/express": "^4.17.13",
+    "@types/mocha": "^9.1.1",
+    "@types/morgan": "^1.9.3",
+    "@types/node": "^17.0.35",
+    "@types/supertest": "^2.0.12",
+    "@types/swagger-jsdoc": "^6.0.1",
+    "@types/swagger-ui-express": "^4.1.3",
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "class-transformer": "^0.5.1",
+    "concurrently": "^7.2.0",
+    "eslint": "^8.15.0",
+    "mocha": "^10.0.0",
+    "nodemon": "^2.0.16",
+    "supertest": "^6.2.3",
+    "ts-node": "^10.7.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "class-validator": "^0.13.2",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.17.1",
+    "helmet": "^5.1.0",
+    "hpp": "^0.2.3",
+    "mongoose": "^6.3.4",
+    "morgan": "^1.10.0",
+    "ramda": "^0.28.0",
+    "swagger-jsdoc": "^6.2.1",
+    "swagger-ui-express": "^4.1.6",
+    "winston": "^3.7.2",
+    "winston-daily-rotate-file": "^4.6.1"
+  }
+}
