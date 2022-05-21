@@ -17,24 +17,24 @@ class UserService {
   public async findUserDataById(userId: string): Promise<UserData> {
     if (nullCheck(userId)) throw new HttpException(400, "User Id is undefined");
 
-    const findUser: UserData | null = await this.users.findOne({ _id: userId }).populate('hobbies');
-    if (!findUser) throw new HttpException(204, '');
+    const userResult: UserData | null = await this.users.findOne({ _id: userId }).populate('hobbies');
+    if (!userResult) throw new HttpException(204, '');
 
-    return findUser;
+    return userResult;
   }
 
   public async findUserById(userId: string): Promise<User> {
     if (nullCheck(userId)) throw new HttpException(400, "User Id is undefined");
 
-    const findUser: User | null = await this.users.findOne({ _id: userId });
-    if (!findUser) throw new HttpException(204, '');
+    const userResult: User | null = await this.users.findOne({ _id: userId });
+    if (!userResult) throw new HttpException(204, '');
 
-    return findUser;
+    return userResult;
   }
 
   public async createUser(userData: User): Promise<User| null> {
-    const findUser: User | null = await this.users.findOne({ _id: userData._id });
-    if (findUser) throw new HttpException(400, `User id: ${userData._id} already exists`);
+    const userResult: User | null = await this.users.findOne({ _id: userData._id });
+    if (userResult) throw new HttpException(400, `User id: ${userData._id} already exists`);
 
     const createUserData: User = await this.users.create(userData);
 
@@ -43,8 +43,8 @@ class UserService {
 
   public async updateUser(userData: User): Promise<User> {
     if (userData._id) {
-      const findUser: User | null = await this.users.findOne({ _id: userData._id });
-      if (nullCheck(findUser)) throw new HttpException(204, `User not found for id: ${userData._id}`);
+      const userResult: User | null = await this.users.findOne({ _id: userData._id });
+      if (nullCheck(userResult)) throw new HttpException(204, `User not found for id: ${userData._id}`);
     }
 
     const updateUserById: User | null = await this.users.findByIdAndUpdate(userData._id, 
