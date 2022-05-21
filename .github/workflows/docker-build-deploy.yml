@@ -23,7 +23,7 @@ jobs:
       - name: Create Env File
         run: |
           cat << EOF > prod.env
-          MONGODB_CONNECTION_URL=${{secrets.MONGODB_CONNECTION_URL}}
+          DB_CONNECTION_STRING=${{secrets.DB_CONNECTION_STRING}}
           EOF
           
       - name: Build Docker Image
