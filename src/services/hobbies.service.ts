@@ -21,7 +21,7 @@ class HobbiesService {
   public async findHobbiesByUserId(userId: string): Promise<UserData> {
     if (nullCheck(userId)) throw new HttpException(400, "User Id is undefined");
 
-    const userHobby: UserData | null = await this.users.findOne({id: userId}).populate('hobbies');
+    const userHobby: UserData | null = await this.users.findOne({_id: userId}).populate('hobbies');
     if (!userHobby) throw new HttpException(204, '');
 
     return userHobby;
