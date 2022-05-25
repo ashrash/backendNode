@@ -1,6 +1,6 @@
 import { Schema } from 'mongoose';
 import { Hobbies, UpdateHobby } from '../interfaces/hobbies.interface';
-import { User } from '../interfaces/users.interface';
+import { User, UserData } from '../interfaces/users.interface';
 import { HttpException } from '../utils/exception';
 import hobbiesModel from '../models/hobbies.models';
 import usersModel from '../models/users.models';
@@ -18,13 +18,13 @@ class HobbiesService {
     return hobbies;
   }
 
-  public async findHobbiesById(userId: string): Promise<Hobbies> {
-    if (nullCheck(userId)) throw new HttpException(400, "Hobbies Id is undefined");
+  public async findHobbiesByUserId(userId: string): Promise<UserData> {
+    if (nullCheck(userId)) throw new HttpException(400, "User Id is undefined");
 
-    const resultHobby: Hobbies | null = await this.hobbies.findOne({ _id: userId });
-    if (!resultHobby) throw new HttpException(204, '');
+    const userHobby: UserData | null = await this.users.findOne({id: userId}).populate('hobbies');
+    if (!userHobby) throw new HttpException(204, '');
 
-    return resultHobby;
+    return userHobby;
   }
 
   public async createHobby(userId: string, hobbyData: Hobbies): Promise<Hobbies| null> {

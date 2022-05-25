@@ -5,13 +5,12 @@ import { Schema } from 'mongoose';
 export interface UserGet {
     _id: number;
     name: string;
-    hobbies: [Hobbies];
 }
 
 export interface UserData {
     _id: number;
-    name: string;
-    hobbies: [Hobbies];
+    name?: string;
+    hobbies?: [Hobbies];
 }
   
 export interface User {

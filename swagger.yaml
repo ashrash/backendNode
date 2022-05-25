@@ -97,6 +97,20 @@ paths:
         500:
           description: 'Server Error'
   /hobbies/{userId}:
+    get:
+      tags:
+      - Hobbies
+      summary: Find Hobbies by userId
+      parameters:
+      - name: userId
+        in: path
+        description: user Id
+        required: true
+      responses:
+        200:
+          description: 'OK'
+        500:
+          description: 'Server Error'
     post:
       tags:
       - Hobbies

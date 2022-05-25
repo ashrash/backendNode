@@ -14,7 +14,6 @@ class HobbiesRoute implements Routes {
 
   private initializeRoutes() {
     this.router.get(`${this.route}`, this.hobbiesController.getHobbies);
-    this.router.get(`${this.route}/:_id`, this.hobbiesController.getHobbyById);
     this.router.get(`${this.route}/:userId`, this.hobbiesController.getHobbyByUserId);
     this.router.post(`${this.route}/:userId`,  this.hobbiesController.createHobby);
     this.router.put(`${this.route}/:_id`,  this.hobbiesController.updateHobby);

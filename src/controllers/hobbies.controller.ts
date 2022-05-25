@@ -1,3 +1,4 @@
+import { UserData } from '@/interfaces/users.interface';
 import { NextFunction, Request, Response } from 'express';
 import { Hobbies, UpdateHobby } from '../interfaces/hobbies.interface';
 import hobbiesService from '../services/hobbies.service';
@@ -15,21 +16,10 @@ class HobbiesController {
     }
   };
 
-  public getHobbyById = async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      const hobbiesId: string = req.params._id;
-      const findOneHobbiesData: Hobbies = await this.hobbiesService.findHobbiesById(hobbiesId);
-
-      res.status(200).json({ data: findOneHobbiesData, message: 'findOne' });
-    } catch (error) {
-      next(error);
-    }
-  };
-
   public getHobbyByUserId = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const userId: string = req.params.userId;
-      const hobbiesData: Hobbies = await this.hobbiesService.findHobbiesByUserId(userId);
+      const hobbiesData: any = await this.hobbiesService.findHobbiesByUserId(userId);
 
       res.status(200).json({ data: hobbiesData, message: 'findOne' });
     } catch (error) {
