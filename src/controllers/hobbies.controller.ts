@@ -26,6 +26,17 @@ class HobbiesController {
     }
   };
 
+  public getHobbyByUserId = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const userId: string = req.params.userId;
+      const hobbiesData: Hobbies = await this.hobbiesService.findHobbiesByUserId(userId);
+
+      res.status(200).json({ data: hobbiesData, message: 'findOne' });
+    } catch (error) {
+      next(error);
+    }
+  };
+
   public createHobby = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const hobbyData: Hobbies = req.body;

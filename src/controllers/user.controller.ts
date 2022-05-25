@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { User, UserData } from '../interfaces/users.interface';
+import { User, UserData, UserGet } from '../interfaces/users.interface';
 import userService from '../services/users.service';
 
 class UsersController {
@@ -7,7 +7,7 @@ class UsersController {
 
   public getUsers = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const findAllUsersData: UserData[] = await this.userService.findAllUser();
+      const findAllUsersData: UserGet[] = await this.userService.findAllUser();
 
       res.status(200).json({ data: findAllUsersData, message: 'findAll' });
     } catch (error) {

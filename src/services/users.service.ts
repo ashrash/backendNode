@@ -1,4 +1,4 @@
-import { User, UserData } from '../interfaces/users.interface';
+import { User, UserData, UserGet } from '../interfaces/users.interface';
 import { HttpException } from '../utils/exception';
 import userModel from '../models/users.models';
 import hobbiesModel from '../models/hobbies.models';
@@ -9,8 +9,8 @@ import { Schema } from 'mongoose';
 class UserService {
   public users = userModel;
 
-  public async findAllUser(): Promise<UserData[]> {
-    const users: UserData[] = await this.users.find().populate('hobbies');
+  public async findAllUser(): Promise<UserGet[]> {
+    const users: UserGet[] = await this.users.find();
     return users;
   }
 
